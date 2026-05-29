@@ -1,0 +1,19 @@
+name: Prayer Notifications
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  prayer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test Message
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d '{
+            "content":"🕌 Prayer Notification System Connected Successfully ✅"
+          }' \
+          ${{ secrets.WEBHOOK_URL }}
